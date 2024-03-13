@@ -10,16 +10,21 @@ import { useNavigate } from "react-router-dom";
 function Login({ setLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!username || !password) {
+      setError(true);
+      return false;
+    }
     if (username === "dummyuser" && password === "123456") {
+      setError(false);
       setLoggedIn(true);
       navigate("/");
     } else {
-      setError("Invalid credentials");
+      setError(true);
     }
   };
 
@@ -37,6 +42,11 @@ function Login({ setLoggedIn }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              {error && !username && (
+                <FormText className="text-danger">
+                  Enter valid user name
+                </FormText>
+              )}
             </div>
 
             <div className="mb-3 d-flex justify-content-space-between  w-100">
@@ -47,15 +57,16 @@ function Login({ setLoggedIn }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {error && !password && (
+                <FormText className="text-danger">
+                  Enter valid password
+                </FormText>
+              )}
             </div>
 
             <Button variant="primary" type="submit">
               Login
             </Button>
-            <FormText className="text-danger">
-              {" "}
-              {error && <p>{error}</p>}
-            </FormText>
           </Form>
         </Col>
       </Row>
