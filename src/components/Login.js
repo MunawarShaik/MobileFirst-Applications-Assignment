@@ -68,6 +68,11 @@ function Login({ setLoggedIn }) {
               Login
             </Button>
           </Form>
+          <div className="card mt-4 p-4 d-flex flex-column justify-content-start">
+            <h3> please use below creadentials </h3>
+            <p>username : dummyuser</p>
+            <p>password : 123456</p>
+          </div>
         </Col>
       </Row>
     </Container>

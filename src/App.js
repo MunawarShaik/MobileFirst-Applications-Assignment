@@ -11,11 +11,18 @@ function App() {
     <Stack className="App">
       <Routes>
         <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
-        <Route path="/homepage" element={<Homepage />} />
+        <Route
+          path="/homepage"
+          element={<Homepage setLoggedIn={setLoggedIn} />}
+        />
         <Route
           path="/"
           element={
-            loggedIn ? <Homepage /> : <Login setLoggedIn={setLoggedIn} />
+            loggedIn ? (
+              <Homepage setLoggedIn={setLoggedIn} />
+            ) : (
+              <Login setLoggedIn={setLoggedIn} />
+            )
           }
         />
       </Routes>
