@@ -6,16 +6,18 @@ import { Route, Routes } from "react-router-dom";
 import Stack from "react-bootstrap/Stack";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <Stack className="App">
       <Routes>
+        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route
-          path="/login"
+          path="/"
           element={
-            !loggedIn ? <Login setLoggedIn={setLoggedIn} /> : <Homepage />
+            loggedIn ? <Homepage /> : <Login setLoggedIn={setLoggedIn} />
           }
-        ></Route>
-        <Route path="/" element={loggedIn ? <Homepage /> : <Login />}></Route>
+        />
       </Routes>
     </Stack>
   );
