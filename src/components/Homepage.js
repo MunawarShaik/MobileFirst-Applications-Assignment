@@ -44,9 +44,9 @@ const Homepage = ({ setLoggedIn }) => {
           </tr>
         </thead>
         <tbody>
-          {jokes.map((joke) => (
+          {jokes.map((joke, index) => (
             <tr key={joke.id} className="table-primary text-start">
-              <td className="table-success p-3 ">{joke.id}</td>
+              <td className="table-success p-3 ">{index + 1}</td>
               <td className="table-info p-3">{joke.joke}</td>
             </tr>
           ))}
